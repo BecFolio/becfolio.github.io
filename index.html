@@ -24,39 +24,6 @@
         <link rel='stylesheet' id='cubeportfolio-css'  href='assets/lib/cubeportfolio/css/cubeportfolio.min.css' type='text/css' media='all' />
         <link rel='stylesheet' id='main-css'  href='style.css' type='text/css' media='all' />
     
-
-
-                <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // --- Step 1: store the password in pieces, Base64 encoded ---
-                const parts = [
-                    "Zm8=",        // "fo"
-                    "bGlvdQ==",    // "liou"
-                    "bmxvY2s="     // "nlock"
-                ];
-            
-                // --- Step 2: decode each part and join them ---
-                function decodeBase64(str) {
-                    try { return atob(str); } catch(e) { return ""; }
-                }
-            
-                const correctPassword = parts.map(decodeBase64).join(""); // becomes "foliounlock"
-            
-                // --- Step 3: check authentication ---
-                if (localStorage.getItem("authenticated") !== "true") {
-                    const userPassword = prompt("This site is password protected. Please enter the password:");
-            
-                    if (userPassword === correctPassword) {
-                        localStorage.setItem("authenticated", "true");
-                    } else {
-                        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Incorrect password. Please reload the page to try again.</h2>";
-                        localStorage.removeItem("authenticated");
-                    }
-                }
-            });
-            </script>
-    
-    
     
     </head>
 
@@ -329,4 +296,39 @@
         <script type='text/javascript' src='assets/js/main.js'></script>       
         <!--  Scripts Ends -->
     </body>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const parts = ["Zm8=", "bGlvdQ==", "bmxvY2s="];
+    function decodeBase64(str) {
+        try { return atob(str); } catch(e) { return ""; }
+    }
+    const correctPassword = parts.map(decodeBase64).join("");
+    function getParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
+    const authKey = "authenticated";
+    if (sessionStorage.getItem(authKey) === "true") return;
+    const urlKey = getParam("key");
+    if (urlKey && urlKey === correctPassword) {
+        sessionStorage.setItem(authKey, "true");
+        return;
+    }
+    const userPassword = prompt("This site is password protected. Please enter the password:");
+    if (userPassword === correctPassword) {
+        sessionStorage.setItem(authKey, "true");
+    } else {
+        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;color:#c00;'>Incorrect password. Please reload to try again.</h2>";
+        sessionStorage.removeItem(authKey);
+    }
+});
+</script>
+
+
+
+
+    
+
 </html>
