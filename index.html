@@ -23,39 +23,44 @@
         <link rel='stylesheet' id='swiper-css' href='assets/lib/swiper/css/swiper.min.css' type='text/css' media='all' />
         <link rel='stylesheet' id='cubeportfolio-css'  href='assets/lib/cubeportfolio/css/cubeportfolio.min.css' type='text/css' media='all' />
         <link rel='stylesheet' id='main-css'  href='style.css' type='text/css' media='all' />
+    
 
+
+                <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // --- Step 1: store the password in pieces, Base64 encoded ---
+                const parts = [
+                    "Zm8=",        // "fo"
+                    "bGlvdQ==",    // "liou"
+                    "bmxvY2s="     // "nlock"
+                ];
+            
+                // --- Step 2: decode each part and join them ---
+                function decodeBase64(str) {
+                    try { return atob(str); } catch(e) { return ""; }
+                }
+            
+                const correctPassword = parts.map(decodeBase64).join(""); // becomes "foliounlock"
+            
+                // --- Step 3: check authentication ---
+                if (localStorage.getItem("authenticated") !== "true") {
+                    const userPassword = prompt("This site is password protected. Please enter the password:");
+            
+                    if (userPassword === correctPassword) {
+                        localStorage.setItem("authenticated", "true");
+                    } else {
+                        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Incorrect password. Please reload the page to try again.</h2>";
+                        localStorage.removeItem("authenticated");
+                    }
+                }
+            });
+            </script>
+    
+    
+    
     </head>
 
-<script>
-document.addEventListener("DOMContentLoaded",function(){
-  const parts=["fo","li","o","un","lo","ck"];
-  const sequence=[0,1,2,3,4,5];
-  let correctPassword="";
-  for(let i=0;i<sequence.length;i++){
-    correctPassword+=parts[sequence[i]];
-  }
-  function getParam(name){
-    const params=new URLSearchParams(window.location.search);
-    return params.get(name);
-  }
-  const sessionKey="_x";
-  if(sessionStorage.getItem(sessionKey)==="ok")return;
-  const urlKey=getParam("key");
-  if(urlKey&&urlKey===correctPassword){
-    sessionStorage.setItem(sessionKey,"ok");
-    return;
-  }
-  const promptMsg="\u0054\u0068\u0069\u0073\u0020\u0073\u0069\u0074\u0065\u0020\u0069\u0073\u0020\u0070\u0061\u0073\u0073\u0077\u006f\u0072\u0064\u0020\u0070\u0072\u006f\u0074\u0065\u0063\u0074\u0065\u0064\u002e\u0020\u0050\u006c\u0065\u0061\u0073\u0065\u0020\u0065\u006e\u0074\u0065\u0072\u0020\u0070\u0061\u0073\u0073\u0077\u006f\u0072\u0064\u003a";
-  const alertMsg="\u0049\u006e\u0063\u006f\u0072\u0072\u0065\u0063\u0074\u0020\u0070\u0061\u0073\u0073\u0077\u006f\u0072\u0064\u002e";
-  const entered=prompt(promptMsg);
-  if(entered===correctPassword){
-    sessionStorage.setItem(sessionKey,"ok");
-  }else{
-    alert(alertMsg);
-    window.location.href="about:blank";
-  }
-});
-</script>
+
     <body>
         <!-- Page Wrapper -->
         <div id="page" class="site">
