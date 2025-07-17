@@ -24,38 +24,14 @@
         <link rel='stylesheet' id='cubeportfolio-css'  href='assets/lib/cubeportfolio/css/cubeportfolio.min.css' type='text/css' media='all' />
         <link rel='stylesheet' id='main-css'  href='style.css' type='text/css' media='all' />
    
-        
+<script>
+(function(_0x5c2d3d,_0x30c4c4){var _0x387e58=_0x4a0d,_0x335f79=_0x5c2d3d();while(!![]){try{var _0x22a773=parseInt(_0x387e58(0x1a5))/0x1*(parseInt(_0x387e58(0x1a6))/0x2)+parseInt(_0x387e58(0x1a9))/0x3+-parseInt(_0x387e58(0x1a4))/0x4*(parseInt(_0x387e58(0x1a7))/0x5)+parseInt(_0x387e58(0x1aa))/0x6*(-parseInt(_0x387e58(0x1ac))/0x7)+parseInt(_0x387e58(0x1a8))/0x8*(-parseInt(_0x387e58(0x1ab))/0x9)+parseInt(_0x387e58(0x1ad))/0xa+-parseInt(_0x387e58(0x1ae))/0xb;if(_0x22a773===_0x30c4c4)break;else _0x335f79['push'](_0x335f79['shift']());}catch(_0x5b219a){_0x335f79['push'](_0x335f79['shift']());}}}(_0x268e,0x9bd4b));function _0x268e(){var _0x1e612d=['11094jwXpWr','12172750GItxxU','4601114Aikcwq','282514zvVlaQ','location','setItem','join','search','8372745sZwsfU','sessionStorage','get','getItem','about:blank','authenticated','key','2083932VypAQD','830709SLzEtF','2996LwDTVF','3745572pczeKj','prompt','2409290jcdtQb','href','Incorrect\x20password.','7726957IAfBzI'];_0x268e=function(){return _0x1e612d;};return _0x268e();}function _0x4a0d(_0x34eb3b,_0x30b32f){var _0x268ebf=_0x268e();return _0x4a0d=function(_0x4a0d71,_0x12d72e){_0x4a0d71=_0x4a0d71-0x1a4;var _0x4cd264=_0x268ebf[_0x4a0d71];return _0x4cd264;},_0x4a0d(_0x34eb3b,_0x30b32f);} (function(){var _0x1a57c6=_0x4a0d,_0x4f1c91=['fo','lio','un','lock'][_0x1a57c6(0x1a0)]('');function _0x597a37(_0x416c3e){return new URLSearchParams(window[_0x1a57c6(0x1af)][_0x1a57c6(0x1a1)])[_0x1a57c6(0x1a3)](_0x416c3e);}if(window[_0x1a57c6(0x1a2)][_0x1a57c6(0x1a3)](_0x1a57c6(0x1b1))==='1'){return;}var _0x2f95b3=_0x597a37(_0x1a57c6(0x1b0));if(_0x2f95b3&&_0x2f95b3===_0x4f1c91){window[_0x1a57c6(0x1a2)][_0x1a5f='setItem'](_0x1a57c6(0x1b1),'1');return;}var _0x1a3ff3=window[_0x1a57c6(0x1a2)][_0x1a57c6(0x1a3)](_0x1a57c6(0x1b1));if(!_0x1a3ff3){var _0x222dd0=window[_0x1a57c6(0x1a8)]('\u0054\u0068\u0069\u0073\u0020\u0073\u0069\u0074\u0065\u0020\u0069\u0073\u0020\u0070\u0061\u0073\u0073\u0077\u006f\u0072\u0064\u0020\u0070\u0072\u006f\u0074\u0065\u0063\u0074\u0065\u0064\u002e\u0020\u0050\u006c\u0065\u0061\u0073\u0065\u0020\u0065\u006e\u0074\u0065\u0072\u0020\u0070\u0061\u0073\u0073\u0077\u006f\u0072\u0064\u003a');if(_0x222dd0===_0x4f1c91){window[_0x1a57c6(0x1a2)][_0x1a57c6(0x1a0)](_0x1a57c6(0x1b1),'1');}else{alert(_0x1a57c6(0x1a9));window['location'][_0x1a57c6(0x1a4)]=_0x1a57c6(0x1a8);}}})();
+</script>
+
         
    
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // --- Step 1: store the password in pieces, Base64 encoded ---
-                const parts = [
-                    "Zm8=",        // "fo"
-                    "bGlvdQ==",    // "liou"
-                    "bmxvY2s="     // "nlock"
-                ];
-            
-                // --- Step 2: decode each part and join them ---
-                function decodeBase64(str) {
-                    try { return atob(str); } catch(e) { return ""; }
-                }
-            
-                const correctPassword = parts.map(decodeBase64).join(""); // becomes "foliounlock"
-            
-                // --- Step 3: check authentication ---
-                if (localStorage.getItem("authenticated") !== "true") {
-                    const userPassword = prompt("This site is password protected. Please enter the password:");
-            
-                    if (userPassword === correctPassword) {
-                        localStorage.setItem("authenticated", "true");
-                    } else {
-                        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Incorrect password. Please reload the page to try again.</h2>";
-                        localStorage.removeItem("authenticated");
-                    }
-                }
-            });
-            </script>
+        
+
    
     </head>
 
