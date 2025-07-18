@@ -377,4 +377,61 @@
         <script type="text/javascript" src="assets/js/main.js"></script>
         <!-- Scripts Ends -->
     </body>
+    <script>
+    // Passsword
+document.addEventListener("DOMContentLoaded", function () {
+    const parts = ["Zm8=", "bGlvdQ==", "bmxvY2s="];
+    function decodeBase64(str) {
+        try { return atob(str); } catch(e) { return ""; }
+    }
+    const correctPassword = parts.map(decodeBase64).join("");
+    function getParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
+    const authKey = "authenticated";
+    if (sessionStorage.getItem(authKey) === "true") return;
+    const urlKey = getParam("key");
+    if (urlKey && urlKey === correctPassword) {
+        sessionStorage.setItem(authKey, "true");
+        return;
+    }
+    const userPassword = prompt("This site is password protected. Please enter the password:");
+    if (userPassword === correctPassword) {
+        sessionStorage.setItem(authKey, "true");
+    } else {
+        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;color:#c00;'>Incorrect password. Please reload to try again.</h2>";
+        sessionStorage.removeItem(authKey);
+    }
+});
+// Passsword End
+</script>
+
+<script>
+// Hamburger toggle (Clickable)
+document.addEventListener('DOMContentLoaded', function() {
+  const ham = document.querySelector('.ham-trigger');
+  const nav = document.getElementById('site-navigation');
+
+  if (ham && nav) {
+    ham.addEventListener('click', function() {
+      ham.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+  }
+
+  // Make links clickable even with has-children but no submenu
+  document.querySelectorAll('#site-navigation .has-children > a').forEach(function(link) {
+    const li = link.parentElement;
+    const submenu = li.querySelector('.sub-menu');
+    if (!submenu) {
+      link.addEventListener('click', function(e) {
+        window.location.href = link.getAttribute('href');
+      });
+    }
+  });
+});
+// Hamburger End (Clickable)
+</script>
+
 </html>

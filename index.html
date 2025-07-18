@@ -31,33 +31,34 @@
     <body>
         <!-- Page Wrapper -->
         <div id="page" class="site">
-<header id="masthead" class="site-header standard sticky" role="banner">		
-  <div class="container">
-    <!-- Logo / Site Branding -->
-    <div id="site-branding">			           	
-      <a class="nav-name" href="index.html">Rebecca Price</a>
-    </div>
+            <header id="masthead" class="site-header standard sticky" role="banner">		
+                <div class="container">
+                    <div id="site-branding">			           
+                     <a class="nav-name" href="index.html">Rebecca Price</a>
+                    </div><!-- .site-branding -->
+                    <span id="ham-trigger-wrap">
+                        <span class="ham-trigger">
+                            <span></span>                            
+                        </span>                            
+                    </span>
+                    
+                    <!-- Nav -->
+                    <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Top Menu">
+                        <ul id="top-menu" class="menu">
+                            <li class="has-children current-menu-parent"><a href="index.html">Work</a>
+                            </li>
+                            <li class="has-children"><a href="about.html">About</a>
 
-    <!-- Hamburger Trigger -->
-    <span id="ham-trigger-wrap">
-      <span class="ham-trigger">
-        <span></span>
-      </span>
-    </span>
+                            </li>
+                            <li class="has-children"><a href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- Nav End -->
 
-    <!-- Navigation -->
-    <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Top Menu">
-      <ul id="top-menu" class="menu">
-        <li class="has-children current-menu-parent"><a href="index.html">Work</a></li>
-        <li class="has-children"><a href="about.html">About</a></li>
-        <li class="has-children"><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <!-- Navigation End -->
-  </div>
-</header>
-            
-            <!-- #masthead -->
+
+                </div><!-- .wrap -->		
+            </header><!-- #masthead -->
 
 
             
@@ -287,17 +288,16 @@
         <script type='text/javascript' src='assets/js/vendor/jquery.easing.min.1.3.js'></script>        
         <script type='text/javascript' src='assets/lib/cubeportfolio/js/jquery.cubeportfolio.min.js'></script>
         <script type='text/javascript' src='assets/lib/swiper/js/swiper.min.js'></script>        
-
         <script type="text/javascript" src="assets/js/vendor/ScrollMagic.min.js"></script>
         <script type="text/javascript" src="assets/js/vendor/animation.gsap.min.js"></script>
         <script type="text/javascript" src="assets/js/vendor/tilt.jquery.min.js"></script>
-
         <script type='text/javascript' src='assets/js/main.js'></script>       
         <!--  Scripts Ends -->
     </body>
 
 
 <script>
+    // Passsword
 document.addEventListener("DOMContentLoaded", function () {
     const parts = ["Zm8=", "bGlvdQ==", "bmxvY2s="];
     function decodeBase64(str) {
@@ -323,6 +323,34 @@ document.addEventListener("DOMContentLoaded", function () {
         sessionStorage.removeItem(authKey);
     }
 });
+// Passsword End
+</script>
+
+<script>
+// Hamburger toggle (Clickable)
+document.addEventListener('DOMContentLoaded', function() {
+  const ham = document.querySelector('.ham-trigger');
+  const nav = document.getElementById('site-navigation');
+
+  if (ham && nav) {
+    ham.addEventListener('click', function() {
+      ham.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+  }
+
+  // Make links clickable even with has-children but no submenu
+  document.querySelectorAll('#site-navigation .has-children > a').forEach(function(link) {
+    const li = link.parentElement;
+    const submenu = li.querySelector('.sub-menu');
+    if (!submenu) {
+      link.addEventListener('click', function(e) {
+        window.location.href = link.getAttribute('href');
+      });
+    }
+  });
+});
+// Hamburger End (Clickable)
 </script>
 
 
