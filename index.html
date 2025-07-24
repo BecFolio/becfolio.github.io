@@ -75,7 +75,7 @@
                                             <div class="col-sm-12 offset-lg-1 col-lg-10">
                                                   <div class="heading-block text-center">
                                                     <h1 class="block-size-1">
-Graphic & Digital Designer with 10+ years' studio experience across brands, print, digital and motion.                                                </div>
+Graphic & Digital Designer with 10+ years' studio experience across brands, print, digital, UI and motion.                                                </div>
                                             </div>
                                         </div>     
                                     </div>         
@@ -293,36 +293,6 @@ Graphic & Digital Designer with 10+ years' studio experience across brands, prin
         <!--  Scripts Ends -->
     </body>
 
-
-<script>
-    // Passsword
-document.addEventListener("DOMContentLoaded", function () {
-    const parts = ["Zm8=", "bGlvdQ==", "bmxvY2s="];
-    function decodeBase64(str) {
-        try { return atob(str); } catch(e) { return ""; }
-    }
-    const correctPassword = parts.map(decodeBase64).join("");
-    function getParam(name) {
-        const params = new URLSearchParams(window.location.search);
-        return params.get(name);
-    }
-    const authKey = "authenticated";
-    if (sessionStorage.getItem(authKey) === "true") return;
-    const urlKey = getParam("key");
-    if (urlKey && urlKey === correctPassword) {
-        sessionStorage.setItem(authKey, "true");
-        return;
-    }
-    const userPassword = prompt("This site is password protected. Please enter the password:");
-    if (userPassword === correctPassword) {
-        sessionStorage.setItem(authKey, "true");
-    } else {
-        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;color:#c00;'>Incorrect password. Please reload to try again.</h2>";
-        sessionStorage.removeItem(authKey);
-    }
-});
-// Passsword End
-</script>
 
 <script>
 // Hamburger toggle (Clickable)
